@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "vite": "^2.9.5"
+  },
+  "name": "json2excel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitee.com:ronn97/json2excel.git",
+  "author": "Ronn <ronn97@qq.com>",
+  "license": "MIT"
+}
