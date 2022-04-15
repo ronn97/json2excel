@@ -2,6 +2,9 @@
   "devDependencies": {
     "vite": "^2.9.5"
   },
+  "scripts": {
+    "start": "vite"
+  },
   "name": "json2excel",
   "version": "1.0.0",
   "main": "index.js",
