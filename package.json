@@ -3,7 +3,8 @@
     "vite": "^2.9.5"
   },
   "scripts": {
-    "start": "vite"
+    "start": "vite",
+    "build": "vite build"
   },
   "name": "json2excel",
   "version": "1.0.0",
