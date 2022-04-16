@@ -1,5 +1,6 @@
 import Util from "./util.js";
-const Excel = require('exceljs');
+// const Excel = require('exceljs');
+import  Excel from 'exceljs';
 
 export class ERPExcelCell {
 
@@ -61,8 +62,8 @@ export class ERPExcelCell {
         // flexDirection: 'column',
         // justifyContent: 'center',
         textAlign: 'center',
-        maxWidth:'120px',
-        padding:'0 5px',
+        maxWidth: '120px',
+        padding: '0 5px',
         lineHeight: '50px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
@@ -428,8 +429,8 @@ export class ERPExcelRow {
 
     constructor(props) {
         this.sheet = props.sheet;
-        if(props.cells) {
-            for(let i = 0; i < props.cells.length; i++) {
+        if (props.cells) {
+            for (let i = 0; i < props.cells.length; i++) {
                 props.cells[i].row = this;
                 let cellObj = Object.assign({}, props.cells[i], { row: this });
                 let cell = new ERPExcelCell(cellObj);
@@ -530,8 +531,8 @@ export class ERPExcelSheet {
         this.workbook = props.workbook;
         this.name = props.name;
         this.rows = [];
-        if(props.rows) {
-            for(let i = 0; i < props.rows.length; i++) {
+        if (props.rows) {
+            for (let i = 0; i < props.rows.length; i++) {
                 let rowObj = Object.assign({}, props.rows[i], { sheet: this });
                 let row = new ERPExcelRow(rowObj);
                 this.rows.push(row);
@@ -629,9 +630,9 @@ export class ERPExcelWorkbook {
     excelExcelWorkbookName = '标题';
 
     constructor(props) {
-        if(props && props.sheets) {
-            for(let i = 0; i < props.sheets.length; i++) {
-                let sheetObj = Object.assign({}, props.sheets[i], { workbook: this});
+        if (props && props.sheets) {
+            for (let i = 0; i < props.sheets.length; i++) {
+                let sheetObj = Object.assign({}, props.sheets[i], { workbook: this });
                 let sheet = new ERPExcelSheet(sheetObj);
                 this.sheets.push(sheet);
             }
@@ -708,7 +709,6 @@ export class ERPExcelWorkbook {
 
     excelExport = (callback) => {
         this.getImages(data => {
-            debugger
             this.excelWorkbook = new Excel.Workbook();
             this.excelAddItem();
             this.excelAddImage();
@@ -742,7 +742,7 @@ export class ERPExcelWorkbook {
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
-                    if(callback){
+                    if (callback) {
                         callback(true);
                     }
                 }).catch(error => {

@@ -1,0 +1,26 @@
+#app {
+  padding: 10px 15px;
+}
+#app .input_info {
+  margin: 10px 0;
+}
+#app .input_info .input_header {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+#app .input_info .input_header .input_item {
+  margin: 0 0 5px;
+  display: flex;
+  align-items: center;
+}
+#app .input_info .input_header .input_item span {
+  width: 20%;
+}
+#app .input_info .input_header .input_item input {
+  width: 80%;
+}
+#app .input_info textarea {
+  width: 100%;
+  min-height: 200px;
+  height: fit-content;
+}

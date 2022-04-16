@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>json2excel</title>
+    <link rel="stylesheet" href="./src/assets/css/index.css">
+    <script type="module" src="./src/index.js"></script>
 </head>
+
 <body>
-    我是首页
+    <div id="app">
+        <button id="export_btn">导出EXCEL🫗</button>
+        <div class="input_info">
+            <div class="input_header">
+                <div class="input_item"><span>输入Excel表名:</span><input id="json_title" placeholder="请输入表名"></div>
+                <div class="input_item"><span>自定义字段顺序:</span><input id="json_columns" placeholder="请输入表头JSON"></div>
+            </div>
+            <textarea id="json_id" placeholder="请输入json数据"></textarea>
+        </div>
+    </div>
 </body>
+<script type="module">
+    import { excelInfo } from './src/index.js';
+
+    const export_btn = document.getElementById('export_btn');
+    export_btn.addEventListener('click', () => {
+        function strToJson(str) {
+            if (str) {
+                const json = eval('(' + str + ')');
+                return json;
+            } else {
+                return null;
+            }
+        }
+
+        const json_data = strToJson(document.getElementById('json_id').value);
+        const json_columns = strToJson(document.getElementById('json_columns').value);
+        const json_title = (document.getElementById('json_title').value);
+
+        if (!json_data) {
+            alert('json 不能为空');
+            return;
+        }
+        const excel = new excelInfo({
+            fileName: json_title || new Date().getTime(),
+            json_data: json_data,
+            json_columns: json_columns
+        });
+
+        excel.initDom();
+        excel.excelExport(isDown => {
+            if (isDown) {
+                alert('导出成功');
+            } else {
+                alert('导出失败');
+            }
+        })
+    });
+</script>
+
 </html>
